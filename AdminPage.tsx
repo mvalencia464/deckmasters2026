@@ -30,7 +30,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
     const rootPages = pages.filter(p => p.layer === 2);
     return rootPages.map(root => ({
       ...root,
-      childPages: (root.children || []).map(childSlug => 
+      childPages: (root.children || []).map(childSlug =>
         pages.find(p => p.slug === childSlug)
       ).filter(Boolean) as PageData[]
     }));
@@ -45,10 +45,35 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
           <span className="text-orange-600">Admin</span> Dashboard
         </h1>
 
+        {/* Alternate Home Page Reference */}
+        <section className="mb-16 border border-orange-800/30 bg-orange-950/20 p-8 rounded-sm">
+          <h2 className="text-2xl font-display font-bold uppercase mb-4 border-b border-orange-800/30 pb-4 flex items-center gap-3">
+            <span className="text-orange-600">Design Reference:</span> Alternate Home Page Hero
+          </h2>
+          <p className="text-stone-400 text-sm mb-6">
+            Alternative hero image option for comparison. Click to view full size.
+          </p>
+          <div
+            className="relative cursor-pointer group overflow-hidden rounded-sm border border-stone-800 hover:border-orange-600 transition-all"
+            onClick={() => setPreviewImage('https://storage.googleapis.com/msgsndr/tV8qFLdWkBLBfjh64cFV/media/6924ecfbe4747c8379e4732d.png')}
+          >
+            <img
+              src="https://storage.googleapis.com/msgsndr/tV8qFLdWkBLBfjh64cFV/media/6924ecfbe4747c8379e4732d.png"
+              alt="Alternate Home Page Design"
+              className="w-full h-auto object-contain bg-stone-900 group-hover:opacity-90 transition-opacity"
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
+              <span className="text-white text-sm font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity bg-orange-600 px-4 py-2 rounded">
+                Click to Enlarge
+              </span>
+            </div>
+          </div>
+        </section>
+
         {/* Design System Section */}
         <section className="mb-16 border border-stone-800 bg-stone-900/50 p-8 rounded-sm">
           <h2 className="text-2xl font-display font-bold uppercase mb-6 border-b border-stone-800 pb-4">Design System Quick View</h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Colors */}
             <div>
@@ -104,7 +129,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
         {/* Website Directory */}
         <section className="mb-16">
           <h2 className="text-2xl font-display font-bold uppercase mb-6 border-b border-stone-800 pb-4">Website Directory & Assets</h2>
-          
+
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-sm">
               <thead>
@@ -118,7 +143,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
                   <tr key={page.slug} className="group hover:bg-stone-900/30 transition-colors">
                     <td className="py-6 pr-8 align-top">
                       <div className="flex flex-col gap-2">
-                        <button 
+                        <button
                           onClick={() => navigate(page.slug)}
                           className="text-lg font-bold text-white hover:text-orange-600 text-left transition-colors"
                         >
@@ -140,14 +165,14 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
                           if (!section.imagePlaceholder) return null;
                           return (
                             <div key={idx} className="flex gap-4 items-start p-3 border border-stone-800 bg-stone-900/50 rounded-sm">
-                              <div 
+                              <div
                                 className="w-20 h-20 bg-stone-800 flex-shrink-0 overflow-hidden cursor-pointer hover:opacity-80 transition-opacity border border-stone-700"
                                 onClick={() => setPreviewImage(section.imagePlaceholder || null)}
                               >
                                 {section.imagePlaceholder.startsWith('/') || section.imagePlaceholder.startsWith('http') ? (
-                                  <img 
-                                    src={section.imagePlaceholder} 
-                                    alt="Thumbnail" 
+                                  <img
+                                    src={section.imagePlaceholder}
+                                    alt="Thumbnail"
                                     className="w-full h-full object-cover"
                                     onError={(e) => {
                                       (e.target as HTMLImageElement).src = 'https://placehold.co/100x100/333/666?text=Err';
@@ -164,9 +189,9 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
                                   {section.title || "Untitled Section"}
                                 </span>
                                 <span className="text-[10px] text-stone-500 uppercase tracking-wider">Section Image</span>
-                                <a 
-                                  href={section.imagePlaceholder} 
-                                  target="_blank" 
+                                <a
+                                  href={section.imagePlaceholder}
+                                  target="_blank"
                                   rel="noopener noreferrer"
                                   className="text-[10px] text-orange-600 hover:underline truncate"
                                 >
@@ -191,7 +216,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
         {/* Visual Hierarchy Tree */}
         <section>
           <h2 className="text-2xl font-display font-bold uppercase mb-10 border-b border-stone-800 pb-4">Site Hierarchy Visualizer</h2>
-          
+
           <div className="p-8 border border-stone-800 bg-stone-900/20 rounded-sm overflow-x-auto">
             <div className="min-w-[800px]">
               {/* Root Node */}
@@ -213,7 +238,7 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
 
                 {hierarchy.map((category, catIdx) => (
                   <div key={category.slug} className="flex flex-col items-center relative">
-                     {/* Vertical Line Up to Horizontal Bar */}
+                    {/* Vertical Line Up to Horizontal Bar */}
                     <div className="absolute bottom-full left-1/2 w-px h-6 bg-stone-700"></div>
 
                     <div className="bg-stone-900 border border-stone-800 px-5 py-3 rounded-sm mb-8 min-w-[200px] text-center z-10 shadow-md">
@@ -228,8 +253,8 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
                           <div key={child.slug} className="flex items-center gap-4 mb-4 relative">
                             {/* Horizontal Line to Child */}
                             <div className="absolute right-full top-1/2 w-4 h-px bg-stone-800"></div>
-                            
-                            <div 
+
+                            <div
                               className="flex items-center gap-3 hover:bg-stone-800/50 p-2 rounded transition-colors cursor-pointer"
                               onClick={() => navigate(child.slug)}
                             >
@@ -250,19 +275,19 @@ const AdminPage: React.FC<AdminPageProps> = ({ pages, navigate }) => {
 
       {/* Image Modal */}
       {previewImage && (
-        <div 
+        <div
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-8"
           onClick={() => setPreviewImage(null)}
         >
-          <button 
+          <button
             className="absolute top-8 right-8 text-white hover:text-orange-600 transition-colors"
             onClick={() => setPreviewImage(null)}
           >
             <X className="w-10 h-10" />
           </button>
-          <img 
-            src={previewImage} 
-            alt="Preview" 
+          <img
+            src={previewImage}
+            alt="Preview"
             className="max-w-full max-h-full object-contain border-2 border-stone-800 shadow-2xl"
             onClick={(e) => e.stopPropagation()}
           />

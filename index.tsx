@@ -4128,7 +4128,7 @@ const HomePage = ({ openQuoteForm, handleHeroFormSubmit, navigate, activeService
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0 bg-stone-900">
         <img
-          src="https://storage.googleapis.com/msgsndr/tV8qFLdWkBLBfjh64cFV/media/691ffdcb7d31bf633e244ca3.jpg"
+          src="https://storage.googleapis.com/msgsndr/tV8qFLdWkBLBfjh64cFV/media/6924dce8db7e0b11dae2c6ae.webp"
           alt="Modern Deck in Anchorage"
           className="w-full h-full object-cover opacity-70 grayscale-[0.2] scale-105 animate-slow-zoom"
         />
