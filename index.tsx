@@ -4649,7 +4649,7 @@ const App = () => {
     {
       title: "Outdoor Living",
       desc: "Complete outdoor kitchens, fire pits, and pergolas to extend your living space.",
-      image: "https://storage.googleapis.com/msgsndr/tV8qFLdWkBLBfjh64cFV/media/692005b77d31bf9253254ee2.webp"
+      image: "https://storage.googleapis.com/msgsndr/tV8qFLdWkBLBfjh64cFV/media/6924e48946b2e7e3e1997a18.webp"
     }
   ];
 
