@@ -328,6 +328,7 @@ const core30Pages = [
     content: {
       intro: "When you need professional deck installation in Anchorage, speed and efficiency matter—but never at the cost of quality. We specialize in rapid, high-precision builds for busy homeowners in neighborhoods like **Midtown** and **Turnagain**. Whether you are dreaming of a [Trex Transcend](/deck-materials-components/trex-deck-installation) deck in 'Toasted Sand' to match the warm Alaskan summer light, or a 'Foggy Wharf' grey to complement your modern siding, our 'Strike Team' approach allows us to deploy massive resources to a single site, condensing weeks of work into days.",
       hook: "Focus on Speed & Efficiency for busy homeowners.",
+      thumbnail: "/images/deck-installation-thumbnail.png",
       localProof: { quote: "Their demo crew came out and had it down in about an hour... build crew came out, and had the deck done in less than 24hrs.", author: "Joshua Swan", location: "Midtown / Taku (Dorbrandt St)" },
       sections: [
         {
@@ -337,7 +338,7 @@ const core30Pages = [
             "This isn't magic; it's extreme logistics. Before we even touch your property, our warehouse team cuts the framing packages to length based on your specific architectural drawings. We pre-assemble beam headers (using heavy-duty 4x12 or 4x6 stock) and stair stringers in our controlled shop environment. We arrive with the framing cut list ready, the **Steel Piles** scheduled for an 8:00 AM drive, and the dumpster on-site by 7:30 AM.",
             "For homeowners on **Dorbrandt St** and throughout **Taku**, this means you go to work with an old, unsafe deck and come home to a completed project. We don't leave your backyard a construction zone for weeks; we treat it like a surgical strike, utilizing efficient waste management to keep your property clean."
           ],
-          imagePlaceholder: "/images/placeholder-time-lapse-deck-replacement.gif"
+          imagePlaceholder: "/images/24-hour-replacement-promise.png"
         },
         {
           title: "The Unseen Engineering: Building Beyond Code for Alaska",
@@ -3534,7 +3535,12 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
         </button>
 
         {!isSuccess ? (
-          <div className="flex flex-col h-full min-h-[500px]">
+          <form className="flex flex-col h-full min-h-[500px]" onSubmit={handleSubmit}>
+            {/* Hidden Inputs for Tracking */}
+            <input type="hidden" name="projectType" value={formData.projectType} />
+            <input type="hidden" name="material" value={formData.material} />
+            <input type="hidden" name="usage" value={formData.usage} />
+
             {/* Header & Progress */}
             <div className="bg-stone-950 p-8 border-b border-stone-800">
               <div className="w-full bg-stone-800 h-1 mb-6 rounded-full overflow-hidden">
@@ -3639,6 +3645,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                   <div>
                     <label className="block text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">When are you hoping to start?</label>
                     <select
+                      name="timeline"
                       value={formData.timeline}
                       onChange={(e) => handleInputChange('timeline', e.target.value)}
                       className="w-full bg-stone-950 border border-stone-800 p-4 text-white focus:outline-none focus:border-orange-600 transition-colors appearance-none"
@@ -3654,6 +3661,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                     <label className="block text-xs font-bold uppercase tracking-widest text-stone-500 mb-3">What is your Zip Code?</label>
                     <input
                       type="text"
+                      name="zipCode"
                       inputMode="numeric"
                       value={formData.zipCode}
                       onChange={(e) => handleInputChange('zipCode', e.target.value)}
@@ -3673,6 +3681,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                       <label className="block text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">First Name</label>
                       <input
                         type="text"
+                        name="firstName"
                         value={formData.firstName}
                         onChange={(e) => handleInputChange('firstName', e.target.value)}
                         className="w-full bg-stone-950 border border-stone-800 p-4 text-white focus:outline-none focus:border-orange-600 transition-colors"
@@ -3682,6 +3691,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                       <label className="block text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Last Name</label>
                       <input
                         type="text"
+                        name="lastName"
                         value={formData.lastName}
                         onChange={(e) => handleInputChange('lastName', e.target.value)}
                         className="w-full bg-stone-950 border border-stone-800 p-4 text-white focus:outline-none focus:border-orange-600 transition-colors"
@@ -3693,6 +3703,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                     <label className="block text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Email Address</label>
                     <input
                       type="email"
+                      name="email"
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
                       className="w-full bg-stone-950 border border-stone-800 p-4 text-white focus:outline-none focus:border-orange-600 transition-colors"
@@ -3703,6 +3714,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                     <label className="block text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Phone Number</label>
                     <input
                       type="tel"
+                      name="phone"
                       value={formData.phone}
                       onChange={(e) => handleInputChange('phone', e.target.value)}
                       className="w-full bg-stone-950 border border-stone-800 p-4 text-white focus:outline-none focus:border-orange-600 transition-colors"
@@ -3713,6 +3725,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                     <label className="block text-xs font-bold uppercase tracking-widest text-stone-500 mb-2">Address (Optional)</label>
                     <input
                       type="text"
+                      name="address"
                       value={formData.address}
                       onChange={(e) => handleInputChange('address', e.target.value)}
                       placeholder="Helps us view satellite imagery"
@@ -3725,6 +3738,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                       <input
                         type="checkbox"
                         id="consent"
+                        name="consent"
                         checked={formData.consent}
                         onChange={(e) => handleInputChange('consent', e.target.checked)}
                         className="peer h-5 w-5 cursor-pointer appearance-none rounded border border-stone-700 bg-stone-950 checked:bg-orange-600 checked:border-orange-600 transition-all shrink-0"
@@ -3743,6 +3757,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
             <div className="bg-stone-950 p-8 border-t border-stone-800 flex justify-between items-center">
               {step > 1 ? (
                 <button
+                  type="button"
                   onClick={handleBack}
                   className="flex items-center gap-2 text-stone-500 hover:text-white font-bold uppercase text-xs tracking-widest transition-colors"
                 >
@@ -3752,6 +3767,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
 
               {step < 3 ? (
                 <button
+                  type="button"
                   onClick={handleNext}
                   className="bg-white text-stone-950 hover:bg-orange-600 hover:text-white px-8 py-3 font-bold uppercase text-xs tracking-widest transition-all flex items-center gap-2"
                 >
@@ -3759,7 +3775,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                 </button>
               ) : (
                 <button
-                  onClick={handleSubmit}
+                  type="submit"
                   disabled={isSubmitting || !formData.consent}
                   className="bg-orange-600 text-white hover:bg-orange-700 px-8 py-3 font-bold uppercase text-xs tracking-widest transition-all flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
@@ -3768,7 +3784,7 @@ const LeadCaptureModal = ({ isOpen, onClose, initialData, startStep = 1 }) => {
                 </button>
               )}
             </div>
-          </div>
+          </form>
         ) : (
           /* Success State */
           <div className="flex flex-col items-center justify-center h-[500px] p-12 text-center animate-fade-in">
