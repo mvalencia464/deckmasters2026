@@ -328,7 +328,7 @@ const core30Pages = [
     content: {
       intro: "When you need professional deck installation in Anchorage, speed and efficiency matter—but never at the cost of quality. We specialize in rapid, high-precision builds for busy homeowners in neighborhoods like **Midtown** and **Turnagain**. Whether you are dreaming of a [Trex Transcend](/deck-materials-components/trex-deck-installation) deck in 'Toasted Sand' to match the warm Alaskan summer light, or a 'Foggy Wharf' grey to complement your modern siding, our 'Strike Team' approach allows us to deploy massive resources to a single site, condensing weeks of work into days.",
       hook: "Focus on Speed & Efficiency for busy homeowners.",
-      thumbnail: "/images/deck-installation-thumbnail.png",
+      thumbnail: "/images/deck-installation-thumbnail.webp",
       localProof: { quote: "Their demo crew came out and had it down in about an hour... build crew came out, and had the deck done in less than 24hrs.", author: "Joshua Swan", location: "Midtown / Taku (Dorbrandt St)" },
       sections: [
         {
@@ -338,7 +338,7 @@ const core30Pages = [
             "This isn't magic; it's extreme logistics. Before we even touch your property, our warehouse team cuts the framing packages to length based on your specific architectural drawings. We pre-assemble beam headers (using heavy-duty 4x12 or 4x6 stock) and stair stringers in our controlled shop environment. We arrive with the framing cut list ready, the **Steel Piles** scheduled for an 8:00 AM drive, and the dumpster on-site by 7:30 AM.",
             "For homeowners on **Dorbrandt St** and throughout **Taku**, this means you go to work with an old, unsafe deck and come home to a completed project. We don't leave your backyard a construction zone for weeks; we treat it like a surgical strike, utilizing efficient waste management to keep your property clean."
           ],
-          imagePlaceholder: "/images/24-hour-replacement-promise.png"
+          imagePlaceholder: "/images/24-hour-replacement-promise.webp"
         },
         {
           title: "The Unseen Engineering: Building Beyond Code for Alaska",
